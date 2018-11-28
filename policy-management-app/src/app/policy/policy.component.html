@@ -1,0 +1,46 @@
+<h1>Policy</h1>
+
+<div class="container">
+  <div
+    class="alert alert-warning"
+    *ngIf="policyForm.dirty && policyForm.invalid"
+  >
+    Enter valid values
+  </div>
+  <form (ngSubmit)="!policyForm.invalid && savePolicy()" #policyForm="ngForm">
+    <fieldset class="form-group">
+      <label>Description</label>
+      <input
+        type="text"
+        [(ngModel)]="policy.description"
+        class="form-control"
+        name="description"
+        required="required"
+      />
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label>Premium Date</label>
+      <input
+        type="date"
+        [ngModel]="policy.premiumDate | date: 'yyyy-MM-dd'"
+        (ngModelChange)="policy.premiumDate = $event"
+        class="form-control"
+        name="premiumDate"
+        required="required"
+      />
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Premium Amount</label>
+      <input
+        type="text"
+        [(ngModel)]="policy.premiumAmount"
+        class="form-control"
+        name="premiumAmount"
+        required="required"
+      />
+    </fieldset>
+
+    <button type="submit" class="btn btn-success" >Save</button>
+  </form>
+</div>

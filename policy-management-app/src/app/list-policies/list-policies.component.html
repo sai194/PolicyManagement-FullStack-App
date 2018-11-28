@@ -1,0 +1,38 @@
+<h1>My Policy</h1>
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Premium Date</th>
+        <th>Premium Amount</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- for (Todo todo: todos) { -->
+      <tr *ngFor="let policy of policies">
+        <td>{{ policy.description }}</td>
+        <td>{{ policy.premiumDate | date | uppercase }}</td>
+        <td>{{ policy.premiumAmount }}</td>
+        <td>
+          <button (click)="updatePolicy(policy.id)" class="btn btn-success">
+            Update
+          </button>
+        </td>
+        <td>
+          <button (click)="deletePolicy(policy.id)" class="btn btn-warning">
+            Delete
+          </button>
+        </td>
+      </tr>
+      <!-- } -->
+    </tbody>
+  </table>
+
+  <div class="row">
+    <button (click)="addPolicy()" class="btn btn-success">Add</button>
+</div>
+</div>

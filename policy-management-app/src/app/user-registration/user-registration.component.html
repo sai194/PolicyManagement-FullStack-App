@@ -1,0 +1,55 @@
+<h1>User Registration !!!</h1>
+<div class="container">
+    <div
+    class="alert alert-warning"
+    *ngIf="errorFlag" >
+    Not able to create user, contact support !!!
+  </div>
+  <div class="alert alert-success" *ngIf="message" >
+    {{message}}
+  </div>
+  <form (ngSubmit)="!userForm.invalid && saveUser()" #userForm="ngForm">
+      <fieldset class="form-group">
+          <label>User Name</label>
+          <input
+            type="text"
+            [(ngModel)]="user.userName"
+            class="form-control"
+            name="userName"
+            required="required"
+          />
+        </fieldset>
+        <fieldset class="form-group">
+            <label>First Name</label>
+            <input
+              type="text"
+              [(ngModel)]="user.name"
+              class="form-control"
+              name="name"
+              required="required"
+            />
+          </fieldset>
+          <fieldset class="form-group">
+              <label>Last Name</label>
+              <input
+                type="text"
+                [(ngModel)]="user.lastName"
+                class="form-control"
+                name="lastName"
+                required="required"
+              />
+            </fieldset>
+            <fieldset class="form-group">
+                <label>Password</label>
+                <input
+                  type="password"
+                  [(ngModel)]="user.password"
+                  class="form-control"
+                  name="password"
+                  required="required"
+                />
+              </fieldset>
+
+                <button type="submit" class="btn btn-success" >Sign Up</button>
+  </form>
+</div>
