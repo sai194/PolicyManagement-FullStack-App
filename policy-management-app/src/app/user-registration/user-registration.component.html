@@ -1,9 +1,9 @@
-<h1>User Registration !!!</h1>
+<h1>User Registration </h1>
 <div class="container">
     <div
     class="alert alert-warning"
     *ngIf="errorFlag" >
-    Not able to create user, contact support !!!
+   {{errorMessage}}
   </div>
   <div class="alert alert-success" *ngIf="message" >
     {{message}}
@@ -46,6 +46,16 @@
                   [(ngModel)]="user.password"
                   class="form-control"
                   name="password"
+                  required="required"
+                />
+              </fieldset>
+              <fieldset class="form-group">
+                <label>Confirm Password</label>
+                <input
+                  type="password"
+                  [(ngModel)]="user.confirmPassword"
+                  class="form-control"
+                  name="confirmPassword"
                   required="required"
                 />
               </fieldset>

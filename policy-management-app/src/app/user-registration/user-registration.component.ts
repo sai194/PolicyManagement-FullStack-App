@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { UserRegistrationService } from './../service/data/user-registration.service';
 
 @Component({
@@ -10,7 +11,8 @@ export class UserRegistrationComponent implements OnInit {
   user: User;
   errorFlag = false;
   message: string;
-  constructor(private userRegistrationService: UserRegistrationService) {}
+  errorMessage: string;
+  constructor( private userRegistrationService: UserRegistrationService) {}
 
   ngOnInit() {
     this.user = new User(-1, '', '', '', '', '', '1');
@@ -18,6 +20,12 @@ export class UserRegistrationComponent implements OnInit {
 
   saveUser() {
     console.log(this.user);
+    if (this.user.password !== this.user.confirmPassword) {
+      this.errorFlag = true;
+      this.message = '';
+      this.errorMessage = 'Your password and confirmation password do not match';
+      return;
+    }
       this.userRegistrationService.createUser(this.user)
           .subscribe (
             data => {
@@ -27,8 +35,11 @@ export class UserRegistrationComponent implements OnInit {
               if (this.user.id == -1 || this.user.id == 0) {
                   this.errorFlag = true;
                   this.message = '';
+                  this.errorMessage = ' Not able to create user, contact support !!!';
               } else {
-                this.message = 'User created successfully !!!';
+                this.errorFlag = false;
+                this.message = `User ${this.user.userName} created successfully !!!`;
+                this.user = new User(-1, '', '', '', '', '', '1');
               }
             }
           );

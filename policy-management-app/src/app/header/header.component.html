@@ -4,14 +4,14 @@
           Policy Management</a></div>
 
       <ul class="navbar-nav">
-          <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/welcome/admin" class="nav-link">Home</a></li>
-          <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/policies" class="nav-link">Policies</a></li>
+          <li><a *ngIf="basicAuthenticationService.isUserLoggedIn()" (click)=(navigateToWelcomePage()) class="nav-link">Home</a></li>
+          <li><a *ngIf="basicAuthenticationService.isUserLoggedIn()" routerLink="/policies" class="nav-link">Policies</a></li>
       </ul>
 
       <ul class="navbar-nav navbar-collapse justify-content-end">
-              <li><a *ngIf="!hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
-              <li><a *ngIf="!hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/userRegistration" class="nav-link">SignUp</a></li>
-              <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a></li>
+              <li><a *ngIf="!basicAuthenticationService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
+              <li><a *ngIf="!basicAuthenticationService.isUserLoggedIn()" routerLink="/userRegistration" class="nav-link">SignUp</a></li>
+              <li><a *ngIf="basicAuthenticationService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a></li>
       </ul>
   </nav>
 </header>
